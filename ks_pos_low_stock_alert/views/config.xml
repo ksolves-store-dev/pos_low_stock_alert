@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+    @Author: KSOLVES India Private Limited
+    @Email: sales@ksolves.com
+-->
+
+<odoo>
+    <record id="pos_config" model="ir.ui.view">
+        <field name="name">pos.config</field>
+        <field name="model">pos.config</field>
+        <field name="inherit_id" ref="point_of_sale.view_pos_config_form"/>
+        <field name="arch" type="xml">
+            <xpath expr='//group[@name="features"]' position='after'>
+                <group string="POS Low Stock Alert" >
+                    <group>
+                        <label for="id" string="Display Product Stock"/>
+                        <div name="display_stock">
+                            <div name="module_display_stock">
+                                <field name="display_stock" class="oe_inline"/>
+                            </div>
+                        </div>
+                    </group>
+                    <group>
+                        <label for="id" string="Allow order when product is out-of-stock"/>
+                        <div name="allow_order_when_product_out_of_stock">
+                            <div name="module_allow_order_when_product_out_of_stock">
+                                <field name="allow_order_when_product_out_of_stock" class="oe_inline"/>
+                            </div>
+                        </div>
+                    </group>
+                    <group attrs="{'invisible':[('display_stock', '=', False)]}">
+                        <label for="id" string="Minimum Stock Alert"/>
+                        <div name="minimum_stock_alert">
+                            <div name="module_minimum_stock_alert">
+                                <label string="Show stock in red color when it is lower than"/>
+                                <field name="minimum_stock_alert" class="oe_inline"/>
+                            </div>
+                        </div>
+                    </group>
+                </group>
+            </xpath>
+        </field>
+    </record>
+</odoo>
