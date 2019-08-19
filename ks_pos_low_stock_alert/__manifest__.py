@@ -27,7 +27,7 @@
         Point of Sales Low Stock Alert
         POS Shop Low Stock
     """,
-    'author': 'Ksolves',
+    'author': 'Ksolves India Pvt. Ltd.',
     'website': "https://www.ksolves.com/",
     'license': 'LGPL-3',
     'category': 'Point Of Sale',
