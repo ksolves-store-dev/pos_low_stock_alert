@@ -33,7 +33,7 @@
     'category': 'Point Of Sale',
     'support': 'sales@ksolves.com',
     'version': '13.0.1.0.0',
-    'images': ['static/description/banner.gif'],
+    'images': ['static/description/banner_plsa.gif'],
     'depends': ['point_of_sale'],
     'data': [
         'views/assets.xml',
