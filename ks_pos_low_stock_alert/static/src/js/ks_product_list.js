@@ -11,8 +11,8 @@ odoo.define('ks_pos_low_stock_alert.ks_product_list', function (require) {
     const ks_product_item = (KsProductItem) =>
         class extends KsProductItem {
             addOverlay (){
-                var self = this;
-                var task;
+
+               var task;
                clearInterval(task);
                task = setTimeout(function () {
                    $(".overlay").parent().addClass('pointer-none');

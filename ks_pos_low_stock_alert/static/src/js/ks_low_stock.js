@@ -8,8 +8,7 @@ odoo.define('ks_pos_low_stock_alert.ks_low_stock', function (require) {
 
     var ks_models = require('point_of_sale.models');
     const KsPaymentScreen = require('point_of_sale.PaymentScreen');
-    var ks_utils = require('ks_pos_low_stock_alert.utils');
-    var ks_actionpad = require('point_of_sale.ActionpadWidget');
+    const ks_utils = require('ks_pos_low_stock_alert.utils');
     const Registries = require('point_of_sale.Registries');
 
     ks_models.load_fields('product.product', ['type', 'qty_available']);
@@ -93,53 +92,6 @@ odoo.define('ks_pos_low_stock_alert.ks_low_stock', function (require) {
             });
         }
     });
-
-//    ks_actionpad.include({
-//
-//        renderElement: function(){
-//            var self = this;
-//            this._super();
-//            this.$('.pay').off('click');
-//            this.$('.pay').click(function(){
-//                var order = self.pos.get_order();
-//                if(ks_utils.ks_validate_order_items_availability(self.env.pos.get_order(), self.env.pos.config)) {
-//                    var has_valid_product_lot = _.every(order.orderlines.models, function(line){
-//                        return line.has_valid_product_lot();
-//                    });
-//                    if(!has_valid_product_lot){
-//                        self.gui.show_popup('confirm',{
-//                            'title': _t('Empty Serial/Lot Number'),
-//                            'body':  _t('One or more product(s) required serial/lot number.'),
-//                            confirm: function(){
-//                                self.gui.show_screen('payment');
-//                            },
-//                        });
-//                    }else{
-//                        self.gui.show_screen('payment');
-//                    }
-//                }
-//            });
-//            this.$('.set-customer').click(function(){
-//                self.gui.show_screen('clientlist');
-//            });
-//        }
-//    });
-//
-//   ks_productlist.include({
-//       calculate_cache_key: function(product, pricelist){
-//           return product.id + ',' + pricelist.id  + ',' + product.qty_available;
-//       },
-//
-//       renderElement: function() {
-//           this._super();
-//           var self = this;
-//           var task;
-//           clearInterval(task);
-//           task = setTimeout(function () {
-//               $(".overlay").parent().addClass('pointer-none');
-//           }, 100);
-//       }
-//   });
 
     // overriding the existing class to validate the payment order
     const ks_payment = (KsPaymentScreen) =>
