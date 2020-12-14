@@ -51,6 +51,7 @@
     'data': [
         'views/assets.xml',
         'views/config.xml'
+
     ],
     'qweb': ['static/src/xml/ks_low_stock.xml']
 }
