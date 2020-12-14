@@ -7,16 +7,16 @@
         POS Low Stock Alert v14.0
         Manage the Stock of your POS products by highlighting them in different colors depending on
                 their stock state.
-        POS
-        POS Low Stock Alert
-        Low Stock Alert
-        Stock Alert
-        POS Low Stock Warning
-        POS Stock Warning
-        Inventory Alert
-        Inventory Minimum Quantity Alert
+        POS,
+        POS Low Stock Alert,
+        Low Stock Alert,
+        Stock Alert,
+        POS Low Stock Warning,
+        POS Stock Warning,
+        Inventory Alert,
+        Inventory Minimum Quantity Alert,
         Inventory Minimum Quantity Warning
-        POS Manager
+        POS Manager,
         POS Inventory
         POS Stock
         POS Stock Alert
