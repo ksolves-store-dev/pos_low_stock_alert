@@ -15,17 +15,17 @@
         POS Stock Warning,
         Inventory Alert,
         Inventory Minimum Quantity Alert,
-        Inventory Minimum Quantity Warning
+        Inventory Minimum Quantity Warning,
         POS Manager,
-        POS Inventory
-        POS Stock
-        POS Stock Alert
-        POS Retail
-        POS Shop
-        Point of Sales
-        Point of Sales Stock Alert
-        Point of Sales Low Stock Alert
-        POS Shop Low Stock
+        POS Inventory,
+        POS Stock,
+        POS Stock Alert,
+        POS Retail,
+        POS Shop,
+        Point of Sales,
+        Point of Sales Stock Alert,
+        Point of Sales Low Stock Alert,
+        POS Shop Low Stock,
         stock notification, 
         low stock notification, 
         product stock notification, 
@@ -46,12 +46,11 @@
     'category': 'Point Of Sale',
     'support': 'sales@ksolves.com',
     'version': '14.0.1.0.0',
-    'images': ['static/description/banner_plsa.gif'],
+    'images': ['static/description/banner.jpg'],
     'depends': ['point_of_sale'],
     'data': [
         'views/assets.xml',
         'views/config.xml'
-
     ],
     'qweb': ['static/src/xml/ks_low_stock.xml']
 }
