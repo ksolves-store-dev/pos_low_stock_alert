@@ -62,6 +62,7 @@
             'ks_pos_low_stock_alert/static/src/js/ks_low_stock.js',
             'ks_pos_low_stock_alert/static/src/js/ks_product_list.js',
             'ks_pos_low_stock_alert/static/src/js/ks_product_screen.js',
+            'ks_pos_low_stock_alert/static/src/js/ks_product_widget.js',
         ],
         'web.assets_qweb': [
             'ks_pos_low_stock_alert/static/src/xml/**/*',
