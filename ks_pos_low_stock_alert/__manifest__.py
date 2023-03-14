@@ -45,7 +45,7 @@
     'license': 'LGPL-3',
     'category': 'Point Of Sale',
     'support': 'sales@ksolves.com',
-    'version': '14.0.1.0.0',
+    'version': '14.0.1.0.1',
     'images': ['static/description/banner.jpg'],
     'depends': ['point_of_sale'],
     'data': [
