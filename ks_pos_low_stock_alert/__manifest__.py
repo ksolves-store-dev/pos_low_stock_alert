@@ -43,6 +43,8 @@
     'author': 'Ksolves India Pvt. Ltd.',
     'website': "https://www.ksolves.com/",
     'license': 'LGPL-3',
+    'currency': 'EUR',
+    'price': 18.20,
     'category': 'Point Of Sale',
     'support': 'sales@ksolves.com',
     'version': '13.0.1.0.0',
