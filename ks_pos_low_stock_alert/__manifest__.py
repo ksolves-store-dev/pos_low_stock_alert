@@ -44,7 +44,7 @@
     'website': "https://store.ksolves.com/",
     'license': 'LGPL-3',
     'currency': 'EUR',
-    'price': '0.0',
+    'price': 18.20,
     'category': 'Point Of Sale',
     'support': 'sales@ksolves.com',
     'version': '15.0.1.0.1',
