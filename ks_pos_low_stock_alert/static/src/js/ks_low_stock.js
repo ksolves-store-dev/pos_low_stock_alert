@@ -1,36 +1,37 @@
-/*
-    @Author: KSOLVES India Private Limited
-    @Email: sales@ksolves.com
-*/
-
-odoo.define('ks_pos_low_stock_alert.ks_low_stock', function (require) {
+odoo.define('ks_pos_low_stock_alert.ks_ps', function (require) {
     "use strict";
 
-    var ks_models = require('point_of_sale.models');
-    const KsPaymentScreen = require('point_of_sale.PaymentScreen');
-    const ks_utils = require('ks_pos_low_stock_alert.utils');
-    const Registries = require('point_of_sale.Registries');
+//import { patch } from "@web/core/utils/patch";
+var { PosGlobalState, Order } = require('point_of_sale.models');
+const Registries = require('point_of_sale.Registries');
 
-    ks_models.load_fields('product.product', ['type', 'qty_available']);
-    var ks_super_pos = ks_models.PosModel.prototype;
+//import { useRef, useState, useEffect } from "@odoo/owl";
 
-    ks_models.PosModel = ks_models.PosModel.extend({
-        initialize: function (session, attributes) {
-            this.ks_load_product_quantity_after_product();
-            ks_super_pos.initialize.call(this, session, attributes);
-        },
+//patch(PosGlobalState.prototype, "KsPosPosGlobalState",{
+//      constructor(obj) {
+//         super(obj);
+////        this.ks_load_product_quantity_after_product();
+//
+//            onMounted(this.ks_load_product_quantity_after_product());
+////        }
+//    },
 
-        ks_get_model_reference: function (ks_model_name) {
+const KsPosPosGlobalState = (PosGlobalState) => class KsPosPosGlobalState extends PosGlobalState {
+    constructor(obj) {
+         super(obj);
+//         this.ks_load_product_quantity_after_product()
+    }
+    ks_get_model_reference (ks_model_name) {
             var ks_model_index = this.models.map(function (e) {
                 return e.model;
-            }).indexOf(ks_model_name);
+            }).indexOf('product.product');
             if (ks_model_index > -1) {
                 return this.models[ks_model_index];
             }
-            return false;
-        },
+            return ks_model_name;
+        }
 
-        ks_load_product_quantity_after_product: function () {
+    ks_load_product_quantity_after_product () {
             var ks_product_model = this.ks_get_model_reference('product.product');
             var ks_product_super_loaded = ks_product_model.loaded;
             ks_product_model.loaded = (self, ks_products) => {
@@ -52,8 +53,8 @@ odoo.define('ks_pos_low_stock_alert.ks_low_stock', function (require) {
                 self.ks_update_qty_by_product_id(self, ks_products);
                 done.resolve();
             }
-        },
-
+        }
+//
         ks_update_qty_by_product_id(self, ks_products){
             if(!self.db.qty_by_product_id){
                 self.db.qty_by_product_id = {};
@@ -62,26 +63,26 @@ odoo.define('ks_pos_low_stock_alert.ks_low_stock', function (require) {
                 self.db.qty_by_product_id[ks_product.id] = ks_product.qty_available;
             });
             self.ks_update_qty_on_product();
-        },
+        }
 
-        ks_update_qty_on_product: function () {
+        ks_update_qty_on_product () {
             var self = this;
             var ks_products = self.db.product_by_id;
             var ks_product_quants = self.db.qty_by_product_id;
             for(var pro_id in self.db.qty_by_product_id){
                 ks_products[pro_id].qty_available = ks_product_quants[pro_id];
             }
-        },
+        }
 
-        push_single_order: function(ks_order, opts){
-            var ks_pushed = ks_super_pos.push_single_order.call(this, ks_order, opts);
+        push_single_order(ks_order, opts){
+            var ks_pushed = super.push_single_order.apply(this, [ks_order, opts])
             if (ks_order){
                 this.ks_update_product_qty_from_order(ks_order);
             }
             return ks_pushed;
-        },
+        }
 
-        ks_update_product_qty_from_order: function(ks_order){
+        ks_update_product_qty_from_order(ks_order){
             var self = this;
             ks_order.orderlines.forEach(line => {
                 var ks_product = line.get_product();
@@ -91,24 +92,7 @@ odoo.define('ks_pos_low_stock_alert.ks_low_stock', function (require) {
                 }
             });
         }
-    });
 
-    // overriding the existing class to validate the payment order
-    const ks_payment = (KsPaymentScreen) =>
-        class extends KsPaymentScreen {
-
-        async validateOrder(isForceValidate) {
-            if (await this._isOrderValid(isForceValidate) && ks_utils.ks_validate_order_items_availability(this.env.pos.get_order(), this.env.pos.config)) {
-                // remove pending payments before finalizing the validation
-                for (let line of this.paymentLines) {
-                    if (!line.is_done()) this.currentOrder.remove_paymentline(line);
-                }
-                await this._finalizeValidation();
-            }
-        }
-    };
-
-    Registries.Component.extend(KsPaymentScreen,ks_payment);
-
-    return KsPaymentScreen;
-});
+}
+Registries.Model.extend(PosGlobalState, KsPosPosGlobalState);
+})

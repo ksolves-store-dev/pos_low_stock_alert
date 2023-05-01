@@ -1,17 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<!--
-    @Author: KSOLVES India Private Limited
-    @Email: sales@ksolves.com
--->
-
 <odoo>
-    <record id="pos_config" model="ir.ui.view">
+    <record id="res_config" model="ir.ui.view">
         <field name="name">pos.config</field>
         <field name="model">pos.config</field>
         <field name="inherit_id" ref="point_of_sale.pos_config_view_form"/>
         <field name="arch" type="xml">
-            <xpath expr='//div[@id="inventory_location"]' position='after'>
+            <xpath expr='//div[@id="title"]' position='after'>
                 <h2>POS Low Stock Alert</h2>
                 <div class="row mt16 o_settings_container" id="pos_session_stock">
                     <div class="col-xs-12 col-md-6 o_setting_box" title="Display Quantity of Products in POS">

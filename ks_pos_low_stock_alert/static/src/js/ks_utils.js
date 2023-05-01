@@ -1,15 +1,15 @@
+/** @odoo-module **/
 /*
     @Author: KSOLVES India Private Limited
     @Email: sales@ksolves.com
 */
 
-odoo.define('ks_pos_low_stock_alert.utils', function (require) {
-    "use strict";
+import { _t } from "web.core";
+import { Gui } from 'point_of_sale.Gui';
+const { Component } = owl;
 
-    var _t = require('web.core')._t;
-    const { Gui } = require('point_of_sale.Gui');
-
-    function ks_validate_order_items_availability(ks_order, config, ks_gui) {
+export class utils extends Component{
+     ks_validate_order_items_availability(ks_order, config, ks_gui) {
 
         var isValid = true, ks_order_line;
 
@@ -30,8 +30,6 @@ odoo.define('ks_pos_low_stock_alert.utils', function (require) {
         }
         return isValid;
     }
-
-    return {
-        ks_validate_order_items_availability: ks_validate_order_items_availability
-    }
-});
+}
+//
+//return utils

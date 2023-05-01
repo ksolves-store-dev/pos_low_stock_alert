@@ -52,7 +52,7 @@
     'depends': ['point_of_sale'],
     'data': [
         # 'views/assets.xml',
-        'views/config.xml'
+        'views/pos_config.xml'
     ],
     # 'qweb': ['static/src/xml/ks_low_stock.xml']
     'assets' : {
@@ -63,6 +63,7 @@
             'ks_pos_low_stock_alert/static/src/js/ks_product_list.js',
             'ks_pos_low_stock_alert/static/src/js/ks_product_screen.js',
             'ks_pos_low_stock_alert/static/src/js/ks_product_widget.js',
+            'ks_pos_low_stock_alert/static/src/xml/ks_low_stock.xml',
         ],
         'web.assets_qweb': [
             'ks_pos_low_stock_alert/static/src/xml/**/*',

@@ -1,17 +1,19 @@
-odoo.define('ks_pos_low_stock_alert.ksProductWidget', function(require) {
-    'use strict';
+/** @odoo-module **/
+/*
+    @Author: KSOLVES India Private Limited
+    @Email: sales@ksolves.com
+*/
 
-    const { useState } = owl;
-    const { patch } = require('web.utils');
-    const PosComponent = require('point_of_sale.ProductsWidget');
-    const Registries = require('point_of_sale.Registries');
+import Registries from "point_of_sale.Registries";
+import PosComponent from 'point_of_sale.ProductsWidget';
+import { patch } from "@web/core/utils/patch";
 
-    patch(PosComponent.prototype, 'ks_pos_low_stock_alert.KsProductWidget', {
+
+patch(PosComponent.prototype, 'ks_pos_low_stock_alert.KsProductWidget', {
         get productsToDisplay() {
             const list = this._super();
             return list.sort((a, b) => b.qty_available - a.qty_available);
         }
 
-    })
+})
 
-});

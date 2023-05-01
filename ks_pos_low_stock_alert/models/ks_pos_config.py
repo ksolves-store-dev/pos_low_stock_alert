@@ -9,6 +9,15 @@ from odoo import api, fields, models
 class PosConfig(models.Model):
     _inherit = 'pos.config'
 
-    display_stock = fields.Boolean(string = 'Display Stock of products in POS', default = True)
+    display_stock = fields.Boolean(string ='Display Stock of products in POS', default = True)
     minimum_stock_alert = fields.Integer(string='Minimum Limit to change the stock color for the product', default = 0)
     allow_order_when_product_out_of_stock = fields.Boolean(string = 'Allow Order when Product is Out Of Stock', default = True)
+
+
+class PosSession(models.Model):
+    _inherit = 'pos.session'
+
+    def _loader_params_product_product(self):
+        res=super()._loader_params_product_product()
+        res['search_params']['fields'] = res['search_params']['fields'] + ['type','qty_available']
+        return res
