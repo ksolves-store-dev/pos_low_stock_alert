@@ -52,7 +52,7 @@
     'depends': ['point_of_sale'],
     'data': [
         # 'views/assets.xml',
-        'views/pos_config.xml'
+        'views/ks_pos_config.xml'
     ],
     # 'qweb': ['static/src/xml/ks_low_stock.xml']
     'assets' : {
