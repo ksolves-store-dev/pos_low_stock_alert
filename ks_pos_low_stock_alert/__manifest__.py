@@ -47,7 +47,7 @@
     'price': 18.20,
     'category': 'Point Of Sale',
     'support': 'sales@ksolves.com',
-    'version': '15.0.1.0.1',
+    'version': '16.0.1.0.0',
     'images': ['static/description/pos_15.jpg'],
     'depends': ['point_of_sale'],
     'data': [
