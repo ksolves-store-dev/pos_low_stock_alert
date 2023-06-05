@@ -48,7 +48,7 @@
     'category': 'Point Of Sale',
     'support': 'sales@ksolves.com',
     'version': '16.0.1.0.0',
-    'images': ['static/description/pos_15.jpg'],
+    'images': ['static/description/Frame 5.png'],
     'depends': ['point_of_sale'],
     'data': [
         # 'views/assets.xml',
