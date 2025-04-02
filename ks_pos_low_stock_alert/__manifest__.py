@@ -50,6 +50,7 @@
     'version': '14.0.1.0.1',
     'images': ['static/description/banner.jpg'],
     'depends': ['point_of_sale'],
+    'live_test_url': 'https://ksdemo.kappso.com/',
     'data': [
         'views/assets.xml',
         'views/config.xml'
